@@ -21,3 +21,10 @@ class Transaction(Model):
 
     def __str__(self):
         return self.name
+
+class Course(Model):
+    name = TextField()
+    price = DecimalField(decimal_places=4, max_digits=10)
+
+    def __str__(self):
+        return self.price
