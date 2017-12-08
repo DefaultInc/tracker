@@ -36,7 +36,7 @@ class TransactionsAPIView(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         data = JSONParser().parse(request)
         data['user'] = request.user.id
-        data['time'] = int(round(time()))
+        data['date'] = int(round(time()))
         serializer = TransactionSerializer(data=data)
         if (serializer.is_valid()):
             serializer.save()
