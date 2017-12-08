@@ -15,6 +15,9 @@ class Category(Model):
 class Transaction(Model):
     user = ForeignKey(User, related_name='transactions', null=True, blank=True, on_delete=CASCADE)
     name = TextField()
-    price = DecimalField(decimal_places=4, max_digits=4)
+    price = DecimalField(decimal_places=4, max_digits=10)
     category = ForeignKey(Category, related_name='transactions', null=True, blank=True, on_delete=SET_NULL)
     date = PositiveIntegerField()
+
+    def __str__(self):
+        return self.name

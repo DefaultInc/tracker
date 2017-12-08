@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import IsAuthenticated
-from app.models import Category
+from app.models import Category, Transaction
 from app.paginations import StandardPagination
 from app.serializers import CategorySerializer, TransactionSerializer
 
@@ -28,9 +28,9 @@ class CategoryAPIView(RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class TransactionAPIView(ListCreateAPIView):
+class TransactionsAPIView(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
-    queryset = Category.objects.all()
+    queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
     pagination_class = StandardPagination
     def post(self, request, *args, **kwargs):
